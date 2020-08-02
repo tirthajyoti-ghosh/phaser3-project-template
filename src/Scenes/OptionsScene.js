@@ -41,6 +41,15 @@ export default class OptionsScene extends Phaser.Scene {
     this.soundButton.on('pointerdown', function () {
       this.soundOn = !this.soundOn;
       this.updateAudio();
-    }.bind(this));    
+    }.bind(this));  
+    
+    this.menuButton = this.add.sprite(400, 500, 'blueButton1').setInteractive();
+    this.menuText = this.add.text(0, 0, 'Menu', { fontSize: '32px', fill: '#fff' });
+    
+    Phaser.Display.Align.In.Center(this.menuText, this.menuButton);
+    
+    this.menuButton.on('pointerdown', function (pointer) {
+      this.scene.start('Title');
+    }.bind(this));
   }
 };
